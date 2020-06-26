@@ -1,0 +1,11 @@
+import UIKit
+
+class {{ module_info.name }}ViewController: UIViewController, {{module_info.name}}ViewInput {
+
+    var presenter: {{ module_info.name }}ViewOutput!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter.didLoad()
+    }
+}

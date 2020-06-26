@@ -1,0 +1,29 @@
+import XCTest
+@testable import {{ module_info.project_name }}
+
+class {{ module_info.name }}PresenterTest: XCTestCase {
+
+    var presenter: {{ module_info.name }}ViewOutput?
+    var interactor: MockInteractor!
+    var router: MockRouter!
+
+    override func setUp() {
+        super.setUp()
+	interactor = MockInteractor()
+	router = MockRouter()
+	presenter = {{ module_info.name }}Presenter(view: {{ module_info.name }}ViewController(), inject: {{ module_info.name }}Presenter.Dependency(router: router, interactor: interactor))
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+}
+
+extension {{ module_info.name }}PresenterTest {
+
+    class MockRouter: {{ module_info.name }}RouterInput {
+    }
+
+    class MockInteractor: {{ module_info.name }}InteractorInput {
+    }
+}

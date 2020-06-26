@@ -1,0 +1,19 @@
+class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
+    
+    struct Dependency {
+	let router: {{ module_info.name }}RouterInput!
+	let interactor: {{ module_info.name }}InteractorInput!
+    }
+
+    weak var view: {{ module_info.name }}ViewInput!
+    private var dependency: Dependency
+
+    init(view: {{ module_info.name }}Input, inject dependency: Dependency) {
+    	self.view = view
+	self.dependency = dependency
+    }
+
+    func didLoad() {
+
+    }
+}
