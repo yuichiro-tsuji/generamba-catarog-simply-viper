@@ -8,7 +8,7 @@ class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
     weak var view: {{ module_info.name }}ViewInput!
     private var dependency: Dependency
 
-    init(view: {{ module_info.name }}Input, inject dependency: Dependency) {
+    init(view: {{ module_info.name }}ViewInput, inject dependency: Dependency) {
     	self.view = view
 	self.dependency = dependency
     }
