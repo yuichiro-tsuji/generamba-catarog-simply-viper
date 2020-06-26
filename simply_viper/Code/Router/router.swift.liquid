@@ -6,4 +6,19 @@ class {{ module_info.name }}Router: {{ module_info.name }}RouterInput {
     init(view: {{ module_info.name }}ViewController) {
     	self.view = view
     }
+
+    /// Dependency Injection of {{ module_info.name }} module
+    static func createModule() -> UIViewController {
+        let storyboard = UIStoryboard(name: " {{ module_info.name }}", bundle: nil)
+        guard let view = storyboard.instantiateInitialViewController() as? {{ module_info.name }}ViewController else {
+            fatalError()
+        }
+        let interactor = {{ module_info.name }}Interactor()
+        let router = {{ module_info.name }}Router(view: view)
+        let presenter = {{ module_info.name }}Presenter(view: view, inject: {{ module_info.name }}Presenter.Dependency(router: router, interactor: interactor))
+        view.presenter = presenter
+
+        return view
+    }
+
 }
